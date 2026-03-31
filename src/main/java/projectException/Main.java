@@ -72,7 +72,7 @@ public class Main {
         System.out.println("(2) - Добавить объект");
         System.out.println("(3) - Выдать объект");
         System.out.println("(4) - Вернуть объект");
-        System.out.println("(0) - Выйти из приложения");
+        System.out.println("(5) - Выйти из приложения");
     }
 
     public static void main(String[] args) {
@@ -91,8 +91,11 @@ public class Main {
                 case "3":
                     while (true) {
                         try {
-                            System.out.print("Введите название книги: ");
+                            System.out.print("Введите название книги (или введите '0' для отмены): ");
                             String bookName = sc.nextLine().trim();
+                            if(bookName.equals("0")) {
+                                break;
+                            }
                             Validator.checkText(bookName, "название книги");
                             library.takeBook(bookName);
                             break;
@@ -106,8 +109,11 @@ public class Main {
                 case "4":
                     while (true) {
                         try {
-                            System.out.print("Введите название книги: ");
+                            System.out.print("Введите название книги (или '0' для отмены): ");
                             String bookName = sc.nextLine().trim();
+                            if(bookName.equals("0")) {
+                                break;
+                            }
                             Validator.checkText(bookName,"название книги");
                             library.returnBook(bookName);
                             break;
@@ -115,7 +121,7 @@ public class Main {
                             System.out.println(e.getMessage());
                         }
                     } break;
-                case "0": System.exit(0); break;
+                case "5": System.exit(0); break;
                 default: System.out.println("Некорректный ввод!");
             }
         }while(true);
