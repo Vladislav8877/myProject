@@ -1,5 +1,6 @@
 package projectStreamApi;
 import java.util.Set;
+
 public class Customer {
 
     private final long id;
@@ -7,7 +8,7 @@ public class Customer {
     private final long level;
     private final Set<Order> orders;
 
-    Customer(long id, String name, long level, Set<Order> orders) {
+    public Customer(long id, String name, long level, Set<Order> orders) {
         this.id = id;
         this.name = name;
         this.level = level;

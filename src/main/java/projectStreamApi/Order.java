@@ -10,7 +10,7 @@ public class Order {
     private final String status;
     private final Set<Product> products;
 
-    Order(long id, LocalDate orderDate, LocalDate deliveryDate, String status, Set<Product> products) {
+    public Order(long id, LocalDate orderDate, LocalDate deliveryDate, String status, Set<Product> products) {
         this.id = id;
         this.orderDate = orderDate;
         this.deliveryDate = deliveryDate;
