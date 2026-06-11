@@ -10,11 +10,15 @@ public class OrderService {
     }
 
     public String processOrder(Order order) {
-        int result = orderRepository.saveOrder(order);
+        try {
+            int result = orderRepository.saveOrder(order);
 
-        if (result >= 0) {
-            return "Order processed successfully";
-        } else {
+            if (result >= 0) {
+                return "Order processed successfully";
+            } else {
+                return "Order processing failed";
+            }
+        } catch (RuntimeException e) {
             return "Order processing failed";
         }
     }
