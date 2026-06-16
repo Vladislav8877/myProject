@@ -1,8 +1,10 @@
 package projectTesting;
-
 import java.util.Optional;
 
 public class OrderService {
+    public static final String SUCCESS_MESSAGE = "Order processed successfully";
+    public static final String FAILURE_MESSAGE = "Order processing failed";
+
     private final OrderRepository orderRepository;
 
     public OrderService(OrderRepository orderRepository) {
@@ -14,17 +16,16 @@ public class OrderService {
             int result = orderRepository.saveOrder(order);
 
             if (result >= 0) {
-                return "Order processed successfully";
+                return SUCCESS_MESSAGE;
             } else {
-                return "Order processing failed";
+                return FAILURE_MESSAGE;
             }
         } catch (RuntimeException e) {
-            return "Order processing failed";
+            return FAILURE_MESSAGE;
         }
     }
 
     public double calculateTotal(int id) {
-        Optional<Order> order = orderRepository.getOrderById(id);
-        return order.map(Order::getTotalPrice).orElse(0.0);
+        return orderRepository.getOrderById(id).map(Order::getTotalPrice).orElse(0.0);
     }
 }
